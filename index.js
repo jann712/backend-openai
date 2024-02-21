@@ -3,13 +3,20 @@ import OpenAI from "openai";
 import 'dotenv/config'
 import cors from 'cors'
 
+// Aplicação Express
 const app = express();
 
+// Porta da aplicação
 const port = 3000;
 
+// Instância OpenAI
 const openai = new OpenAI();
 
+
+// CORS usado somente para desenvolvimento local mais fluído. Não coloque esse código assim em produção
 app.use(cors())
+
+//JSON para parsing do body da requisição
 app.use(express.json())
 app.post("/prompt", async (req, res) => {
   const { prompt } = req.body;
@@ -29,5 +36,5 @@ app.post("/prompt", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 });
